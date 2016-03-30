@@ -1,2 +1,2 @@
 # Cyllage
-Create collages the fun way
+Create collages the funnest way

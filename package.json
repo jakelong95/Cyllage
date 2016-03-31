@@ -1,0 +1,24 @@
+{
+  "name": "cyllage",
+  "version": "0.1.0",
+  "description": "Make Collages in a fun way!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awolter/Cyllage.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/awolter/Cyllage/issues"
+  },
+  "homepage": "https://github.com/awolter/Cyllage#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "gm": "^1.21.1",
+    "hashmap": "^2.0.4"
+  }
+}

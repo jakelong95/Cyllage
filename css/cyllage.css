@@ -1,0 +1,38 @@
+* {
+
+}
+
+@font-face {
+
+}
+
+body{
+    background-color: #464646;
+}
+
+#headerDiv{
+    position: fixed;
+    top: 5px;
+    left: 160px;
+    right: 5px;
+    height: 50px;
+    background-color: #585858;
+}
+
+#sideBarDiv{
+    position: fixed;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    width: 150px;
+    background-color: #787878;
+}
+
+#canvasDiv{
+    position: fixed;
+    top: 60px;
+    left: 160px;
+    bottom: 5px;
+    right: 5px;
+    background-color: white;
+}

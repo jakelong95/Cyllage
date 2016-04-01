@@ -6,6 +6,10 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/cyllage.css">
+
+    <!-- JS Files -->
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+
 </head>
 <body>
     <div id="headerDiv">
@@ -13,9 +17,14 @@
     </div>
     <div id="sideBarDiv">
         <img src="images/logo.png" draggable="false" style="height: 30px; width: 150px;"/>
-        <button class="sideBarButtons">My Images</button>
-        <button class="sideBarButtons">Layers</button>
-        <div id="My Images"></div>
+        <button id="myImagesButton" class="sideBarButtons">My Images</button>
+        <button id="layersButton" class="sideBarButtons">Layers</button>
+        <div id="myImagesTab" class="sideBarTab" style="display: block;">
+            My Images
+        </div>
+        <div id="layersTab" class="sideBarTab" style="display: none;">
+            Layers
+        </div>
     </div>
     <div id="canvasDiv">
         Canvas

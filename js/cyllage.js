@@ -1,19 +1,19 @@
 /* Global Variables */
 
-myImagesButton_jQ = $("#myImagesButton");
+imagesButton_jQ = $("#imagesButton");
 layersButton_jQ = $("#layersButton");
 
-myImagesTab_jQ = $("#myImagesTab");
+imagesTab_jQ = $("#imagesTab");
 layersTab_jQ = $("#layersTab");
 
 
 $(document).ready(function() {
-    myImagesButton_jQ.click(function(){
-        myImagesTab_jQ.show();
+    imagesButton_jQ.click(function(){
+        imagesTab_jQ.show();
         layersTab_jQ.hide();
     });
     layersButton_jQ.click(function(){
         layersTab_jQ.show();
-        myImagesTab_jQ.hide();
+        imagesTab_jQ.hide();
     });
 });

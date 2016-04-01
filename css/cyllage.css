@@ -10,7 +10,7 @@ body{
     background-color: #464646;
 }
 
-#headerDiv{
+#toolboxDiv{
     position: fixed;
     top: 5px;
     left: 160px;

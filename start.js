@@ -12,6 +12,8 @@ module.exports = function(app, sessions)
 			id = generateSessionID();
 		}
 		
+		sessions.set(id, 0);
+
 		//Create a place to store the images as they are uploaded
 		var dir = "./" + id;
 		if(!fs.existsSync(dir))

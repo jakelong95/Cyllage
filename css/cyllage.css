@@ -28,6 +28,11 @@ body{
     background-color: #787878;
 }
 
+.sideBarButtons{
+    width: 73px;
+
+}
+
 #canvasDiv{
     position: fixed;
     top: 60px;

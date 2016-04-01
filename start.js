@@ -1,4 +1,6 @@
-module.exports = function(app, sessions, fs)
+var fs = require("fs");
+
+module.exports = function(app, sessions)
 {
 	app.get("/start", function(req, res)
 	{

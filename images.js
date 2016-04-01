@@ -2,7 +2,8 @@ module.exports = function(app, sessions)
 {
 	app.post("/images", function(req, res)
 	{
-		res.write(req.body);
-		res.end();
+		console.log(req.body);
+		console.log(req.test);
+		res.send("OK");
 	});
 }

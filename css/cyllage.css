@@ -12,6 +12,8 @@ body{
 
 #toolboxDiv{
     position: fixed;
+    display: flex;
+    align-items:center;
     top: 5px;
     left: 160px;
     right: 5px;
@@ -36,3 +38,16 @@ body{
     right: 5px;
     background-color: white;
 }
+
+#doneDiv{
+    position: fixed;
+    display: flex;
+    align-items:center;
+    top: 5px;
+    right: 5px;
+    height: 30px;
+    background-color: #585858;
+}
+
+
+

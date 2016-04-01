@@ -6,7 +6,7 @@ app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
 
 var HashMap = require("hashmap");
-var sessions = new HashMap(); //maps session ID to number of images stored
+var sessions = new HashMap(); //maps session ID to object containing the number of images and an array containing instructions for each image
 
 var start = require("./start")(app, sessions);
 var imgs = require("./images")(app, sessions);

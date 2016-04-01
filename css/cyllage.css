@@ -30,9 +30,13 @@ body{
     background-color: #787878;
 }
 
+.sideBarButtons{
+    width: 73px;
+}
+
 #canvasDiv{
     position: fixed;
-    top: 40px;
+    top: 60px;
     left: 160px;
     bottom: 5px;
     right: 5px;
@@ -51,3 +55,13 @@ body{
 
 
 
+
+
+.sideBarTab{
+    position: fixed;
+    background-color: transparent;
+    top: 60px;
+    bottom: 5px;
+    left: 5px;
+    width: 150px;
+}

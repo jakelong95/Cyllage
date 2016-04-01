@@ -1,4 +1,4 @@
-module.exports = function(app, sessions)
+module.exports = function(app, sessions, fs)
 {
 	app.get("/start", function(req, res)
 	{
@@ -8,6 +8,13 @@ module.exports = function(app, sessions)
 		while(sessions.has(id))
 		{
 			id = generateSessionID();
+		}
+		
+		//Create a place to store the images as they are uploaded
+		var dir = "./" + id;
+		if(!fs.existsSync(dir))
+		{
+			fs.mkdirSync(dir);
 		}
 		
 		res.json({ "status" : 201, "id" : id });

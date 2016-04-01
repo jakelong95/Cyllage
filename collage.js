@@ -1,4 +1,4 @@
-module.exports = function(app, sessions, gm)
+module.exports = function(app, sessions)
 {
 	app.get("/collage", function(req, res)
 	{

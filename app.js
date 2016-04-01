@@ -1,4 +1,8 @@
 var app = require("express")();
+var bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 var gm = require("gm");
 var HashMap = require("hashmap");
 var sessions = new HashMap();

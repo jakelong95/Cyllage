@@ -8,7 +8,8 @@ module.exports = function(app, sessions)
 		var sessionID = req.body.sessionID;
 	
 		var session = sessions.get(sessionID);
-		var imageNumber = session.num;
+		console.log(JSON.stringify(session));
+		var imageNumber = session.num++;
 
 		//Save the image to disk
 		var fileName = sessionID + "/" + imageNumber + ".png";

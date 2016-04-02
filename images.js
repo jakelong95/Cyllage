@@ -51,10 +51,10 @@ module.exports = function(app, sessions)
 		//Now record the image in the session for future use
 		var img = 
 		{
-			file: fileName//,
-			//layer: operations.layer,
-			//position: operations.pos,
-			//rotate: operations.rotate
+			file: fileName,
+			layer: req.body.operations.layer,
+			position: {x: req.body.operations.pos.x, y: req.body.operations.pos.y},
+			rotate: req.body.operations.rotate
 		};
 
 		session.imgs.push(img);

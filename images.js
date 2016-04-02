@@ -36,13 +36,17 @@ module.exports = function(app, sessions)
 			});
 		}
 
-		/*var resize = operations.size;
+		var w = req.body.operations.size.w;
+		var h = req.body.operations.size.h;
 
 		//If the user wants the image resized
-		if(size.w != -1)
+		if(w != -1)
 		{
-			gm(fileName).
-		}*/
+			gm(fileName).resize(w, h).write(fileName, function(err)
+			{
+				if(err) console.log(err);
+			});
+		}
 
 		//Now record the image in the session for future use
 		var img = 

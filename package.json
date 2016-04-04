@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/awolter/Cyllage#readme",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "express": "^4.13.4",
+    "fs": "0.0.2",
     "gm": "^1.21.1",
     "hashmap": "^2.0.4"
   }

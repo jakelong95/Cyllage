@@ -1,12 +1,16 @@
 var express = require("express");
+var parser = require("body-parser");
 var app = express();
-var gm = require("gm");
+
+app.use(parser.json());
+app.use(parser.urlencoded({extended: true}));
+
 var HashMap = require("hashmap");
-var sessions = new HashMap();
+var sessions = new HashMap(); //maps session ID to object containing the number of images and an array containing instructions for each image
 
 var start = require("./start")(app, sessions);
 var imgs = require("./images")(app, sessions);
-var collage = require("./collage.js")(app, sessions, gm);
+var collage = require("./collage.js")(app, sessions);
 
 app.listen(3000);
 app.use(express.static(__dirname + '/HTML'));

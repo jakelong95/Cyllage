@@ -10,7 +10,6 @@ module.exports = function(app, sessions)
 
 		var createCollage = function()
 		{
-			console.log("Started collaging");
 			var collageName = req.query.session + "/collage.png";
 			var processed = 0;
 
@@ -21,10 +20,8 @@ module.exports = function(app, sessions)
 				var layer = layers.length - 1;
 				var addLayer = function(l)
 				{
-					console.log(l);
 					if(l < 0)
 					{
-						console.log("Finished");
 						fs.readFile(collageName, function(err, data)
 						{
 							var base64 = new Buffer(data, "binary").toString("base64");
@@ -63,7 +60,6 @@ module.exports = function(app, sessions)
 					if(err) console.log(err);
 				});
 				layers.push(fileName);
-				console.log("Finished creating image");
 			}
 
 			var imageFile = item.file;
@@ -71,7 +67,6 @@ module.exports = function(app, sessions)
 			{
 				if(!err)
 				{
-					console.log(imageFile + " " + layers[item.layer]);
 					gm(imageFile).draw("image over " + item.position.x + "," + 
 						item.position.y + " " + size.width + "," + size.height +
 						" " + imageFile).write(layers[item.layer], function(err)
@@ -80,7 +75,6 @@ module.exports = function(app, sessions)
 							session.processed++;
 							if(session.processed >= session.imgs.length)
 							{
-								console.log("Done");
 								createCollage();
 							}
 						});

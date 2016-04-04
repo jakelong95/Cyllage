@@ -11,17 +11,13 @@ module.exports = function(app, sessions)
 		{
 			id = generateSessionID();
 		}
-		
-		id = "jake";
-		sessions.set(id, {num: 0, imgs: new Array()});
+
+		sessions.set(id, {num: 0, processed: 0, imgs: new Array()});
 		console.log(sessions.get(id));
 
 		//Create a place to store the images as they are uploaded
 		var dir = "./" + id;
-		if(!fs.existsSync(dir))
-		{
-			fs.mkdirSync(dir);
-		}
+		fs.mkdir(dir);
 		
 		res.json({ "status" : 201, "id" : id });
 	});

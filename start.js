@@ -1,3 +1,5 @@
+var fs = require("fs");
+
 module.exports = function(app, sessions)
 {
 	app.get("/start", function(req, res)
@@ -9,6 +11,13 @@ module.exports = function(app, sessions)
 		{
 			id = generateSessionID();
 		}
+
+		sessions.set(id, {num: 0, processed: 0, imgs: new Array()});
+		console.log(sessions.get(id));
+
+		//Create a place to store the images as they are uploaded
+		var dir = "./" + id;
+		fs.mkdir(dir);
 		
 		res.json({ "status" : 201, "id" : id });
 	});

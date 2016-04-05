@@ -84,9 +84,5 @@ button{
 .sideBarImage{
     width: 110px;
     margin-left: 20px;
-}
-
-.draggable{
-    position:relative;
-    cursor: move;
+    box-sizing: border-box;
 }

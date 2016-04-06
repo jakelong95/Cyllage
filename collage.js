@@ -10,6 +10,7 @@ module.exports = function(app, sessions)
 		
 		var createCollage = function()
 		{
+            console.log("Creating collage");
 			session.imgs.sort(function(a, b)
 			{
 					return a.layer - b.layer;
@@ -29,22 +30,36 @@ module.exports = function(app, sessions)
 				}
 				else
 				{
-					gm(session.imgs[currentLayer].file).size(function(err, size)
-					{
-						if(!err)
-						{
-							gm(session.imgs[currentLayer].file).draw("image over " + session.imgs[currentLayer].position.x + "," +
-							session.imgs[currentLayer].position.y + " " + size.width + "," + size.height + " " + 
-							session.imgs[currentLayer].file).write(finishedFile, function(err)
+					//gm(session.imgs[currentLayer].file).size(function(err, size)
+					//{
+						//if(!err)
+						//{
+							//gm(session.imgs[currentLayer].file).draw("image over " + session.imgs[currentLayer].position.x + "," +
+                            //session.imgs[currentLayer].position.y + " " + "0,0 " + 
+							//finishedFile).write(finishedFile, function(err)
+                            gm(finishedFile).draw("image over " + session.imgs[currentLayer].position.x + "," + session.imgs[currentLayer].position.y +
+                                                  " 0,0 " + session.imgs[currentLayer].file).write(finishedFile, function(err)
 							{
 								if(err) console.log(err);
 								addLayer(currentLayer + 1);
 							});
-						}
-					});
+                            /*gm(session.imgs[currentLayer].file)
+                                .command("composite")
+                                .out("-geometry", "+" + session.imgs[currentLayer].position.x + "+" + session.imgs[currentLayer].position.y)
+                                .in(session.imgs[currentLayer].file)
+                                .stream()
+                                .write(finishedFile, function(err)
+                                       {
+                                            if(err) console.log(err);
+                                            addLayer(currentLayer + 1);
+                                       });*/
+                            //setTimeout(100, addLayer(currentLayer + 1));
+						//}
+					//});
 				}
 			}
 			addLayer(0);
+            //addLayer(session.imgs.length - 1);
 		}
 
 		gm(req.query.height, req.query.width, "#ffffff").write(finishedFile, function(err)

@@ -14,6 +14,7 @@ module.exports = function(app, sessions)
 
         var performResize = function()
         {
+            console.log("Resize");
            	var w = req.body.operations.size.w;
 		    var h = req.body.operations.size.h;
 
@@ -38,6 +39,7 @@ module.exports = function(app, sessions)
         
         var performCrop = function()
         {
+            console.log("Crop");
             var x1 = req.body.operations.crop.x1;
 		    var x2 = req.body.operations.crop.x2;
 	    	var y1 = req.body.operations.crop.y1;

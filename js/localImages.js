@@ -191,6 +191,17 @@ $("#moveToFrontButton").click(function () {
 $("#doneButton").click(function() {
     var getCollage = function(sessionID) {
         console.log("Getting collage");
+        //TODO Instead of 1024 put whatever the user wanted
+        $.get("http://localhost:3000/collage?session=" + sessionID + "&width=1024&height=1024", function(data) {
+            var imageData = JSON.parse(data).image;
+            var download = document.createElement("a");
+            download.setAttribute("href", "data:image/png;base64," + imageData)
+            download.setAttribute("download", "collage.png");
+            download.style.display = "none";
+            document.body.appendChild(download);
+            download.click();
+            document.body.removeChild(download);
+        });
     };
     
     var sendImages = function(sessionID) {
@@ -199,10 +210,9 @@ $("#doneButton").click(function() {
         for(var i = 0; i < layers.length; i++)
         {
             var image = $("#" + layers[i]);
-            var imageData = JSON.parse(localStorage.getItem("images"))[i];
             var toSend = {
                 sessionID: sessionID,
-                image: imageData,
+                image: image.attr("src"),
                 operations: {
                     crop: {x1: -1, x2: -1, y1: -1, y2: -1},
                     layer: image.css("z-index"),
@@ -214,7 +224,7 @@ $("#doneButton").click(function() {
                 numSent++;
                 if(numSent >= layers.length)
                 {
-                    getCollage(sessionID);   
+                    setTimeout(500, getCollage(sessionID));  
                 }
             });
         }

@@ -32,7 +32,6 @@ interact('.draggable')
 
         // update the element's style
 
-
         // prevent resizing an image smaller than 20x20 pixels
         if(event.rect.width > 20 && event.rect.width > 20){
             console.log(x +", " + y);

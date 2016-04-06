@@ -5,8 +5,6 @@
  * Open source under the MIT License.
  * https://raw.github.com/taye/interact.js/master/LICENSE
  */
-console.log("interact.js loaded");
-
 (function (realWindow) {
     'use strict';
 
@@ -1468,8 +1466,7 @@ console.log("interact.js loaded");
 
                     // if this element is the current inertia target element
                     if (element === this.element
-                        // and the prospective action is the same as the ongoing one
-
+                            // and the prospective action is the same as the ongoing one
                         && validateAction(this.target.getAction(pointer, event, this, this.element), this.target).name === this.prepared.name) {
 
                         // stop inertia so that the next move will be a normal one
@@ -1822,9 +1819,7 @@ console.log("interact.js loaded");
             if (!this.prepared.name) { return; }
 
             if (this.pointerWasMoved
-
-                // ignore movement while inertia is active
-
+                    // ignore movement while inertia is active
                 && (!this.inertiaStatus.active || (pointer instanceof InteractEvent && /inertiastart/.test(pointer.type)))) {
 
                 // if just starting an action, calculate the pointer speed now
@@ -2775,9 +2770,7 @@ console.log("interact.js loaded");
 
             // do not fire a tap event if the pointer was moved before being lifted
             if (eventType === 'tap' && (this.pointerWasMoved
-
-                // or if the pointerup target is different to the pointerdown target
-
+                    // or if the pointerup target is different to the pointerdown target
                 || !(this.downTargets[pointerIndex] && this.downTargets[pointerIndex] === eventTarget))) {
                 return;
             }
@@ -2996,9 +2989,7 @@ console.log("interact.js loaded");
                         ? distance / range < closest.distance / closest.range
                         // this target has Infinite range and the closest doesn't
                         : (range === Infinity && closest.range !== Infinity)
-
-                    // OR this target is closer that the previous closest
-
+                        // OR this target is closer that the previous closest
                     || distance < closest.distance)
                         // The other is not in range and the pointer is closer to this target
                         : (!closest.inRange && distance < closest.distance))) {
@@ -3229,9 +3220,7 @@ console.log("interact.js loaded");
     function getInteractionFromPointer (pointer, eventType, eventTarget) {
         var i = 0, len = interactions.length,
             mouseEvent = (/mouse/i.test(pointer.pointerType || eventType)
-
-            // MSPointerEvent.MSPOINTER_TYPE_MOUSE
-
+                // MSPointerEvent.MSPOINTER_TYPE_MOUSE
             || pointer.pointerType === 4),
             interaction;
 

@@ -67,20 +67,30 @@ var sideBarImgDrag = function (ev) {
 $("#canvasDiv").on("drop", function (ev) {
     ev.preventDefault();
     var src = ev.originalEvent.dataTransfer.getData("src");
-    var img = new Image();
-    img.addEventListener("load", function () {
-        img.id = "canvasImg-" + layers.length;
-        img.className = "draggable canvas-img";
-        img.style.position = "absolute";
-        img.style.zIndex = layers.length;
-        layers[layers.length] = img.id;
-        console.log(layers);
+    var canvasImg = new Image();
+    var layoutImg = new Image();
+    canvasImg.addEventListener("load", function () {
+        canvasImg.id = "canvasImg-" + layers.length;
+        canvasImg.className = "draggable canvas-img";
+        canvasImg.style.position = "absolute";
+        canvasImg.style.zIndex = layers.length;
+        layers[layers.length] = canvasImg.id;
         //$("#canvasDiv").append("<canvas id='canvas-" + img.id + "'></canvas>");
        // document.getElementById("canvas-" + img.id).getContext("2d").drawImage(img, 0, 0);
-       $("#canvasDiv").append(img);
-        selectImg(img.id);
+       $("#canvasDiv").append(canvasImg);
+        selectImg(canvasImg.id);
     });
-    img.src = src;
+
+    layoutImg.addEventListener("load", function () {
+        layoutImg.id = "layoutImg-" + layers.length;
+        layoutImg.className = "layout-img sideBarImage";
+        $("#layerImgs").append(layoutImg);
+        selectImg(canvasImg.id);
+    });
+
+    canvasImg.src = src;
+    layoutImg.src = src;
+    
 }).on("dragover", function (ev) {
     ev.preventDefault();
 });

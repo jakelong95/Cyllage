@@ -19,6 +19,7 @@ body{
 }
 
 button{
+    cursor: pointer;
     height: 30px;
     background-color: #7d0000;
     color: white;
@@ -40,7 +41,7 @@ button{
 
 #sideBarDiv{
     position: fixed;
-    top: 5px;
+    top: 70px;
     bottom: 5px;
     left: 5px;
     width: 150px;
@@ -80,6 +81,29 @@ button{
     overflow-y: scroll;
     font-size: 12px;
     overflow-x: hidden;
+}
+
+.sideBarTabButton{
+    position: fixed;
+    top: 40px;
+    width: 75px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    cursor: pointer;
+}
+
+#imagesTabButton{
+    background-color: #787878;
+    left: 5px;
+}
+
+#layersTabButton{
+    left: 80px;
+    background-color: #7d0000;
 }
 
 .sideBarImage{

@@ -1,7 +1,7 @@
 /* Global Variables */
 
-imagesButton_jQ = $("#imagesButton");
-layersButton_jQ = $("#layersButton");
+imagesTabButton_jQ = $("#imagesTabButton");
+layersTabButton_jQ = $("#layersTabButton");
 
 imagesTab_jQ = $("#imagesTab");
 layersTab_jQ = $("#layersTab");
@@ -73,11 +73,15 @@ window.dragMoveListener = dragMoveListener;
 
 
 $(document).ready(function() {
-    imagesButton_jQ.click(function(){
+    imagesTabButton_jQ.click(function(){
+        imagesTabButton_jQ.css("background-color", "#787878");
+        layersTabButton_jQ.css("background-color", "#7d0000");
         imagesTab_jQ.show();
         layersTab_jQ.hide();
     });
-    layersButton_jQ.click(function(){
+    layersTabButton_jQ.click(function(){
+        layersTabButton_jQ.css("background-color", "#787878");
+        imagesTabButton_jQ.css("background-color", "#7d0000");
         layersTab_jQ.show();
         imagesTab_jQ.hide();
     });

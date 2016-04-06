@@ -28,7 +28,7 @@ $("#subImgUpload").click(function () {
 
 var removeOldImages = function() {
     localStorage.removeItem("images");
-    localStorage.addItem("images", JSON.stringify([]));
+    localStorage.setItem("images", JSON.stringify([]));
 };
 
 var uploadLocalImg = function (file) {

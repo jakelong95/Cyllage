@@ -5,8 +5,9 @@ $(document).ready(function () {
     removeOldImages();
     updateLocalImgs();
 });
-$("#subImgUpload").click(function () {
-    var input = document.getElementById("uploadImg");
+
+$("#uploadImg").on( "change", function (event) {
+    var input = event.target;
     var files = input.files;
     var errors = "";
     if (!files) {

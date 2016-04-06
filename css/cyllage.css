@@ -114,3 +114,8 @@ button{
 .inputFile + label:hover, button:hover {
     background-color: red;
 }
+
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}

@@ -31,18 +31,25 @@ interact('.draggable')
             y = (parseFloat(target.getAttribute('data-y')) || 0);
 
         // update the element's style
-        target.style.width  = event.rect.width + 'px';
-        target.style.height = event.rect.height + 'px';
 
-        // translate when resizing from top or left edges
-        x += event.deltaRect.left;
-        y += event.deltaRect.top;
+        // prevent resizing an image smaller than 20x20 pixels
+        if(event.rect.width > 20 && event.rect.width > 20){
+            console.log(x +", " + y);
+            target.style.width  = event.rect.width + 'px';
+            target.style.height = event.rect.width + 'px';
 
-        target.style.webkitTransform = target.style.transform =
-            'translate(' + x + 'px,' + y + 'px)';
+            // translate when resizing from top or left edges
+            x += event.deltaRect.left;
+            y += event.deltaRect.top;
 
-        target.setAttribute('data-x', x);
-        target.setAttribute('data-y', y);
+            target.style.webkitTransform = target.style.transform =
+                'translate(' + x + 'px,' + y + 'px)';
+
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+        }
+
+
     });
 
 function dragMoveListener (event) {

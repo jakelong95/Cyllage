@@ -3,6 +3,7 @@ var selectedImgId = "";
 var layers = [];
 
 $(document).ready(function () {
+    removeOldImages();
     updateLocalImgs();
 });
 $("#subImgUpload").click(function () {
@@ -25,6 +26,10 @@ $("#subImgUpload").click(function () {
     return false;
 });
 
+
+var removeOldImages = function() {
+  localStorage.removeItem("images");  
+};
 
 var uploadLocalImg = function (file) {
     var reader = new FileReader();

@@ -156,3 +156,29 @@ button{
 .inputFile + label:hover, button:hover, .inactiveTabButton:hover{
     background-color: #ef0000;
 }
+
+.layout-img {
+    width: 110px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+tr.layout-panel td{
+    border-bottom: #ffffff 2px solid;
+}
+
+.deleteBtn {
+    vertical-align:top;
+    position: absolute;
+    right: 2px;
+}
+
+tr.layout-panel.active {
+    background-color : #54a4f2;
+}
+
+.canvas-img.active{
+    outline: dashed 2px blue;
+}

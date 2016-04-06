@@ -6,6 +6,8 @@
     -ms-user-select: none;
     user-select: none;
 
+    font-family: 'Arial', Helvetica, sans-serif;
+    font-size: 12px;
 }
 
 @font-face {
@@ -84,4 +86,31 @@ button{
     width: 110px;
     margin-left: 20px;
     box-sizing: border-box;
+}
+
+.inputFile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputFile + label {
+    cursor: pointer; /* "hand" cursor */
+    color: white;
+    background-color: #7d0000;
+    display: inline-block;
+    height: 30px;
+    align-items: center;
+    width: 148px;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid white;
+    text-align: center;
+}
+
+.inputFile + label:hover, button:hover {
+    background-color: red;
 }

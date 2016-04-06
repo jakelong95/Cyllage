@@ -9,12 +9,15 @@
 
     <!-- JS Files -->
     <script src="/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/interact.js" type="text/javascript"></script>
 
 </head>
 <body>
 <div id="toolboxDiv">
-    <button id="moveButton">Move</button> <button id="rotateButton">Rotate</button> <button id="resize+Button">+</button> <button id="resize-Button">-</button>
-    <button id="back1Button">Back 1</button> <button id="forward1Button">Forward 1</button><button id="moveToBackButton">Back</button> <button id="moveToFrontButton">Front</button>
+    <button id="moveButton">Move</button> <button id="rotateButton">Rotate</button>
+    <button id="resizePlusButton">+</button> <button id="resizeMinusButton">-</button>
+    <button id="back1Button">Back 1</button> <button id="forward1Button">Forward 1</button>
+    <button id="moveToBackButton">Back</button> <button id="moveToFrontButton">Front</button>
 </div>
 <div id="doneDiv">
     <button id="doneButton">Done</button>
@@ -24,16 +27,19 @@
     <button id="imagesButton" class="sideBarButtons">Images</button>
     <button id="layersButton" class="sideBarButtons">Layers</button>
     <div id="imagesTab" class="sideBarTab" style="display: block;">
-        Images
+        <form>
+            <input id="uploadImg" type="file">
+            <button id="subImgUpload" type="button">Upload</button>
+        </form>
+        <div id="sideBarImgs"></div>
     </div>
     <div id="layersTab" class="sideBarTab" style="display: none;">
-        Layers
     </div>
 </div>
 <div id="canvasDiv">
-    Canvas
 </div>
 
 </body>
 <script src="/js/cyllage.js" type="text/javascript"></script>
+<script src="/js/localImages.js" type="text/javascript"></script>
 </html>

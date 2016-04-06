@@ -1,5 +1,13 @@
 * {
+    /* Prevents entire web page from being selectable */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
+    /* Never show the "text-select" cursor when hovering over text */
+    cursor:default;
 }
 
 @font-face {
@@ -8,6 +16,15 @@
 
 body{
     background-color: #464646;
+}
+
+button{
+    height: 30px;
+    background-color: #7d0000;
+    color: white;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: white;
 }
 
 #toolboxDiv{
@@ -56,8 +73,16 @@ body{
 .sideBarTab{
     position: fixed;
     background-color: transparent;
-    top: 60px;
+    top: 80px;
     bottom: 5px;
     left: 5px;
     width: 150px;
+    overflow-y: scroll;
+    font-size: 12px;
+}
+
+.sideBarImage{
+    width: 110px;
+    margin-left: 20px;
+    box-sizing: border-box;
 }

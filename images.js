@@ -5,6 +5,7 @@ module.exports = function(app, sessions)
 {
 	app.post("/images", function(req, res)
 	{
+        console.log("Image received");
 		var sessionID = req.body.sessionID;
 	
 		var session = sessions.get(sessionID);

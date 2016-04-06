@@ -178,8 +178,7 @@ $("#moveToBackButton").click(function () {
 
 $("#moveToFrontButton").click(function () {
     var selectedImg = $("#" + selectedImgId);
-    if(layers.length > 1 && selectedImgId != layers[layers.length - 1])
-    {
+    if(layers.length > 1 && selectedImgId != layers[layers.length - 1]) {
         var backZ = parseInt($("#" + layers[layers.length - 1]).css("z-index"));
         selectedImg.css("z-index", backZ + 1);
         for(var i = layers.indexOf(selectedImgId); i < layers.length - 1; i++)
@@ -190,4 +189,34 @@ $("#moveToFrontButton").click(function () {
     }
 });
 
-
+$("#doneButton").click(function() {
+    var getCollage = function(sessionID) {
+        
+    };
+    
+    var sendImages = function(sessionID) {
+        var numSent = 0;
+        
+        for(var i = 0; i < layers.length; i++)
+        {
+            var image = $("#" + layers[i]);
+            var imageData = localStorage.getItem("images")[i];
+            var toSend = {
+                sessionID: sessionID,
+                image: imageData,
+                operations: {
+                    crop: {x1: -1, x2: -1, y1: -1, y2: -1},
+                    layer: image.css("z-index"),
+                    size: {w: image.width, h: image.height},
+                    pos: {x: image.position().left, y: image.position().top}
+                }
+                
+            }
+        }
+    };
+    
+    $.get("localhost:3000/start", function(data) {
+        //sendImages(data.id);
+        console.log(data.id);
+    });
+});

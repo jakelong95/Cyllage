@@ -74,14 +74,20 @@ window.dragMoveListener = dragMoveListener;
 
 $(document).ready(function() {
     imagesTabButton_jQ.click(function(){
-        imagesTabButton_jQ.css("background-color", "#787878");
-        layersTabButton_jQ.css("background-color", "#7d0000");
+        imagesTabButton_jQ.addClass("activeTabButton");
+        imagesTabButton_jQ.removeClass("inactiveTabButton");
+        layersTabButton_jQ.addClass("inactiveTabButton");
+        layersTabButton_jQ.removeClass("activeTabButton");
         imagesTab_jQ.show();
         layersTab_jQ.hide();
+
+
     });
     layersTabButton_jQ.click(function(){
-        layersTabButton_jQ.css("background-color", "#787878");
-        imagesTabButton_jQ.css("background-color", "#7d0000");
+        layersTabButton_jQ.addClass("activeTabButton");
+        layersTabButton_jQ.removeClass("inactiveTabButton");
+        imagesTabButton_jQ.addClass("inactiveTabButton");
+        imagesTabButton_jQ.removeClass("activeTabButton");
         layersTab_jQ.show();
         imagesTab_jQ.hide();
     });

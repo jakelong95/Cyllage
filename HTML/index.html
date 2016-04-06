@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="toolboxDiv">
-    <button id="moveButton">Move</button> <button id="rotateButton">Rotate</button>
+    <button id="rotateButtonPlus">Rotate CW</button> <button id="rotateButtonMinus">Rotate CCW</button>
     <button id="resizePlusButton">+</button> <button id="resizeMinusButton">-</button>
     <button id="back1Button">Back 1</button> <button id="forward1Button">Forward 1</button>
     <button id="moveToBackButton">Back</button> <button id="moveToFrontButton">Front</button>
@@ -28,7 +28,8 @@
     <button id="imagesButton" class="sideBarButtons">Images</button>
     <button id="layersButton" class="sideBarButtons">Layers</button>
     <div id="imagesTab" class="sideBarTab" style="display: block;">
-        <input id="uploadImg" type="file">
+        <input id="uploadImg" class="inputFile" type="file">
+        <label for="uploadImg">Upload an Image</label>
         <div id="sideBarImgs"></div>
     </div>
     <div id="layersTab" class="sideBarTab" style="display: none;">

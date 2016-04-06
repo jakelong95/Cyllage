@@ -1,4 +1,3 @@
-var selectedImgId = "";
 var layers = [];
 
 $(document).ready(function () {
@@ -75,6 +74,7 @@ $("#canvasDiv").on("drop", function (ev) {
         img.style.position = "absolute";
         img.style.zIndex = layers.length;
         layers[layers.length] = img.id;
+        console.log(layers);
         //$("#canvasDiv").append("<canvas id='canvas-" + img.id + "'></canvas>");
        // document.getElementById("canvas-" + img.id).getContext("2d").drawImage(img, 0, 0);
        $("#canvasDiv").append(img);
@@ -91,15 +91,18 @@ $(document.body).on("mousedown", ".canvas-img", function (event) {
 });
 
 $("#back1Button").click(function () {
-    var selectedImg = $("#" + selectedImgId);
+    var selectedImg = $(".canvas-img.active");
+    var id = selectedImg.attr("id");
     var curZ = selectedImg.css("z-index");
-    var index = layers.indexOf(selectedImgId);
-    if(layers.length > 1 && selectedImgId != layers[0])
+    var index = layers.indexOf(id);
+    console.log(index);
+    if(layers.length > 1 && index != 0)
     {
+        console.log("hello");
         var tempId = layers[index - 1];
         var tempImg = $("#" + tempId);
         var tempZ = tempImg.css("z-index");
-        layers[index - 1] = selectedImgId;
+        layers[index - 1] = id;
         layers[index] = tempId;
         selectedImg.css("z-index", tempZ);
         tempImg.css("z-index", curZ);
@@ -107,24 +110,25 @@ $("#back1Button").click(function () {
 });
 
 var selectImg = function (imgID) {
-    var selectedImg = $("#" + selectedImgId);
+    var selectedImg = $(".canvas-img.active");
     var img = $("#" + imgID);
     selectedImg.css({"border":"", "border-color": ""});
-    selectedImgId = imgID;
-    img.css("border", "dashed 2px");
-    img.css("border-color", "blue");
+    selectedImg.removeClass("active");
+    img.css({"border":"dashed 2px", "border-color": "blue"});
+    img.addClass("active");
 };
 
-$("#forward1Button").click(function () {
-    var selectedImg = $("#" + selectedImgId);
+$("#forward1Button").on("click", function () {
+    var selectedImg = $(".canvas-img.active");
+    var id = selectedImg.attr("id");
     var curZ = parseInt(selectedImg.css("z-index"));
-    var index = layers.indexOf(selectedImgId);
-    if(layers.length > 1 &&  selectedImgId != layers[layers.length - 1])
+    var index = layers.indexOf(id);
+    if(layers.length > 1 &&  id != layers[layers.length - 1])
     {
         var tempId = layers[index + 1];
         var tempImg = $("#" + tempId);
         var tempZ = tempImg.css("z-index");
-        layers[index + 1] = selectedImgId;
+        layers[index + 1] = id;
         layers[index] = tempId;
         selectedImg.css("z-index", tempZ);
         tempImg.css("z-index", curZ);
@@ -140,7 +144,7 @@ $("#resizePlusButton").mousedown(function () {
 });
 
 var resizePlus = function () {
-    var img = $("#" + selectedImgId);
+    var img = $(".canvas-img.active");
     img.height((img.height() + 1));
     img.width((img.width() + 1));
 };
@@ -154,39 +158,41 @@ $("#resizeMinusButton").mousedown(function () {
 });
 
 var resizeMinus = function () {
-    var img = $("#" + selectedImgId);
+    var img = $(".canvas-img.active");
     img.height((img.height() - 1));
     img.width((img.width() - 1));
 };
 
-$("#moveToBackButton").click(function () {
-    var selectedImg = $("#" + selectedImgId);
-    if(layers.length > 1 && selectedImgId != layers[0])
+$("#moveToBackButton").on("click", function () {
+    var selectedImg = $(".canvas-img.active");
+    var id = selectedImg.attr("id");
+    if(layers.length > 1 && id != layers[0])
     {
         var frontZ = $("#" + layers[0]).css("z-index");
         selectedImg.css("z-index", frontZ - 1);
         var tempLayer = layers[0];
-        for(var i = 1; i <= layers.indexOf(selectedImgId); i++)
+        for(var i = 1; i <= layers.indexOf(id); i++)
         {
             var temp = layers[i];
             layers[i] = tempLayer;
             tempLayer = temp;
         }
-        layers[0] = selectedImgId;
+        layers[0] = id;
     }
 });
 
-$("#moveToFrontButton").click(function () {
-    var selectedImg = $("#" + selectedImgId);
-    if(layers.length > 1 && selectedImgId != layers[layers.length - 1])
+$("#moveToFrontButton").on("click", function () {
+    var selectedImg = $(".canvas-img.active");
+    var id = selectedImg.attr("id");
+    if(layers.length > 1 && id != layers[layers.length - 1])
     {
         var backZ = parseInt($("#" + layers[layers.length - 1]).css("z-index"));
         selectedImg.css("z-index", backZ + 1);
-        for(var i = layers.indexOf(selectedImgId); i < layers.length - 1; i++)
+        for(var i = layers.indexOf(id); i < layers.length - 1; i++)
         {
             layers[i] = layers[i+1];
         }
-        layers[layers.length - 1] = selectedImgId;
+        layers[layers.length - 1] = id;
     }
 });
 

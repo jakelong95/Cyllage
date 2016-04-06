@@ -5,8 +5,9 @@ $(document).ready(function () {
     removeOldImages();
     updateLocalImgs();
 });
-$("#subImgUpload").click(function () {
-    var input = document.getElementById("uploadImg");
+
+$("#uploadImg").on( "change", function (event) {
+    var input = event.target;
     var files = input.files;
     var errors = "";
     if (!files) {
@@ -28,7 +29,7 @@ $("#subImgUpload").click(function () {
 
 var removeOldImages = function() {
     localStorage.removeItem("images");
-    localStorage.addItem("images", JSON.stringify([]));
+    localStorage.setItem("images", JSON.stringify([]));
 };
 
 var uploadLocalImg = function (file) {

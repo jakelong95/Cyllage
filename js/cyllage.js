@@ -36,7 +36,7 @@ interact('.draggable')
         if(event.rect.width > 20 && event.rect.width > 20){
             console.log(x +", " + y);
             target.style.width  = event.rect.width + 'px';
-            target.style.height = event.rect.width + 'px';
+            target.style.height = event.rect.height + 'px';
 
             // translate when resizing from top or left edges
             x += event.deltaRect.left;

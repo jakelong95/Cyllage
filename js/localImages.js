@@ -35,13 +35,12 @@ var removeOldImages = function() {
 var uploadLocalImg = function (file) {
     var reader = new FileReader();
     reader.addEventListener("load", function () {
-            var imgArray = [];
+            var imgArray = new Array();
 
             if(localStorage.getItem("images") != null)
             {
                 imgArray = JSON.parse(localStorage.getItem("images"));
             }
-
             imgArray.push(reader.result);
             localStorage.setItem("images", JSON.stringify(imgArray));
 
@@ -191,7 +190,7 @@ $("#moveToFrontButton").click(function () {
 
 $("#doneButton").click(function() {
     var getCollage = function(sessionID) {
-        
+        console.log("Getting collage");
     };
     
     var sendImages = function(sessionID) {
@@ -200,23 +199,28 @@ $("#doneButton").click(function() {
         for(var i = 0; i < layers.length; i++)
         {
             var image = $("#" + layers[i]);
-            var imageData = localStorage.getItem("images")[i];
+            var imageData = JSON.parse(localStorage.getItem("images"))[i];
             var toSend = {
                 sessionID: sessionID,
                 image: imageData,
                 operations: {
                     crop: {x1: -1, x2: -1, y1: -1, y2: -1},
                     layer: image.css("z-index"),
-                    size: {w: image.width, h: image.height},
+                    size: {w: image.width(), h: image.height()},
                     pos: {x: image.position().left, y: image.position().top}
                 }
-                
             }
+            $.post("http://localhost:3000/images", toSend, function(data) {
+                numSent++;
+                if(numSent >= layers.length)
+                {
+                    getCollage(sessionID);   
+                }
+            });
         }
     };
     
-    $.get("localhost:3000/start", function(data) {
-        //sendImages(data.id);
-        console.log(data.id);
+    $.get("http://localhost:3000/start", function(data) {
+        sendImages(data.id);
     });
 });

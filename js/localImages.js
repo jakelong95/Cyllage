@@ -1,4 +1,3 @@
-imgcount = 0;
 var selectedImgId = "";
 var layers = [];
 
@@ -50,7 +49,7 @@ var updateLocalImgs = function () {
     $("#sideBarImgs").html("");
     images.forEach(function (img) {
         var imgString = "<img class='sideBarImage' src='" + img + "' ";
-        imgString += "height='50px' width='50px' draggable='true' ondragstart='sideBarImgDrag(event)'>";
+        imgString += "draggable='true' ondragstart='sideBarImgDrag(event)'>";
         $("#sideBarImgs").append(imgString);
     });
 };
@@ -62,7 +61,7 @@ var sideBarImgDrag = function (ev) {
 $("#canvasDiv").on("drop", function (ev) {
     ev.preventDefault();
     var src = ev.originalEvent.dataTransfer.getData("src");
-    var img = new Image(50, 50);
+    var img = new Image();
     img.addEventListener("load", function () {
         img.id = "canvasImg-" + layers.length;
         img.className = "draggable canvas-img";

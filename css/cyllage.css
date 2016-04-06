@@ -21,7 +21,7 @@ body{
 button{
     cursor: pointer;
     height: 30px;
-    background-color: #7d0000;
+    background-color: #890000;
     color: white;
     border-radius: 5px;
     border-width: 1px;
@@ -78,15 +78,23 @@ button{
     bottom: 5px;
     left: 5px;
     width: 150px;
-    overflow-y: scroll;
-    font-size: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#sideBarImgs{
+    position: fixed;
+    top: 120px;
+    bottom: 5px;
+    left: 5px;
+    width: 150px;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
 .sideBarTabButton{
     position: fixed;
     top: 40px;
-    width: 75px;
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -97,18 +105,28 @@ button{
 }
 
 #imagesTabButton{
-    background-color: #787878;
     left: 5px;
 }
 
 #layersTabButton{
     left: 80px;
-    background-color: #7d0000;
+}
+
+.activeTabButton{
+    width: 75px;
+    background-color: #787878;
+}
+
+.inactiveTabButton{
+    width: 73px;
+    border: 1px solid white;
+    background-color: #890000;
 }
 
 .sideBarImage{
     width: 110px;
     margin-left: 20px;
+    margin-bottom: 10px;
     box-sizing: border-box;
 }
 
@@ -124,7 +142,7 @@ button{
 .inputFile + label {
     cursor: pointer; /* "hand" cursor */
     color: white;
-    background-color: #7d0000;
+    background-color: #890000;
     display: inline-block;
     height: 30px;
     align-items: center;
@@ -135,6 +153,6 @@ button{
     text-align: center;
 }
 
-.inputFile + label:hover, button:hover {
-    background-color: red;
+.inputFile + label:hover, button:hover, .inactiveTabButton:hover{
+    background-color: #ef0000;
 }

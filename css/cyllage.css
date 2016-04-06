@@ -78,8 +78,17 @@ button{
     bottom: 5px;
     left: 5px;
     width: 150px;
-    overflow-y: scroll;
-    font-size: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#sideBarImgs{
+    position: fixed;
+    top: 120px;
+    bottom: 5px;
+    left: 5px;
+    width: 150px;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 

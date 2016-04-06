@@ -6,8 +6,6 @@
     -ms-user-select: none;
     user-select: none;
 
-    /* Never show the "text-select" cursor when hovering over text */
-    cursor:default;
 }
 
 @font-face {

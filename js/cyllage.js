@@ -28,14 +28,14 @@ interact('.draggable')
     .on('resizemove', function (event) {
         var target = event.target,
             x = (parseFloat(target.getAttribute('data-x')) || 0),
-            y = (parseFloat(target.getAttribute('data-y')) || 0);
-
+            y = (parseFloat(target.getAttribute('data-y')) || 0),
+            r = (parseFloat(target.getAttribute('data-r')) || 0);
         // update the element's style
 
         // prevent resizing an image smaller than 20x20 pixels
-        if(event.rect.width > 20 && event.rect.width > 20){
-            console.log(x +", " + y);
-            target.style.width  = event.rect.width + 'px';
+        if(event.rect.width > 20 && event.rect.width > 20 && r == 0){
+            //console.log(x +", " + y);
+            target.style.width  = event.rect.width +  'px';
             target.style.height = event.rect.height + 'px';
 
             // translate when resizing from top or left edges
@@ -43,7 +43,7 @@ interact('.draggable')
             y += event.deltaRect.top;
 
             target.style.webkitTransform = target.style.transform =
-                'translate(' + x + 'px,' + y + 'px)';
+                'translate(' + x + 'px,' + y + 'px) rotate(' + r + 'deg)';
 
             target.setAttribute('data-x', x);
             target.setAttribute('data-y', y);
@@ -55,14 +55,14 @@ function dragMoveListener (event) {
     var target = event.target,
     // keep the dragged position in the data-x/data-y attributes
         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
-        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy,
+        r = (parseFloat(target.getAttribute('data-r')) || 0);
     // translate the element
     target.style.webkitTransform =
         target.style.transform =
-            'translate(' + x + 'px, ' + y + 'px)';
+            'translate(' + x + 'px, ' + y  + 'px) rotate(' + r + 'deg)';
 
-    // update the posiion attributes
+    // update the position attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
 }

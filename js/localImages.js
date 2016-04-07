@@ -68,6 +68,7 @@ $(document).on("dragstart", ".sideBarImage", function (ev) {
 $("#canvasDiv").on("drop", function (ev) {
     ev.preventDefault();
     var src = ev.originalEvent.dataTransfer.getData("src");
+    if(src == "") return;
     var canvasImg = new Image();
     var layoutImg = new Image();
     canvasImg.addEventListener("load", function () {
@@ -171,6 +172,8 @@ $("#resizePlusButton").mousedown(function () {
     resizePlusInt = setInterval("resizePlus()", 50);
 }).mouseup(function () {
     clearInterval(resizePlusInt);
+}).mouseout(function () {
+    clearInterval(resizePlusInt);
 });
 
 var resizePlus = function () {
@@ -184,6 +187,8 @@ $("#resizeMinusButton").mousedown(function () {
     resizeMinus();
     resizeMinusInt = setInterval("resizeMinus()", 50);
 }).mouseup(function () {
+    clearInterval(resizeMinusInt);
+}).mouseout(function () {
     clearInterval(resizeMinusInt);
 });
 
@@ -318,4 +323,46 @@ var moveImgBehind = function (toMove, where) {
         tempRow = temp;
     }
     $("#" + layers["imgs"][toMoveIndex]).css("z-index", lastZ);
+};
+
+var rotateCWInt;
+$("#rotateButtonPlus").mousedown(function () {
+    rotateClockWise();
+    rotateCWInt = setInterval("rotateClockWise()", 30);
+}).mouseup(function () {
+    clearInterval(rotateCWInt);
+}).mouseout(function () {
+    clearInterval(rotateCWInt);
+});
+
+var rotateClockWise = function () {
+    var selectedImg = $(".canvas-img.active");
+    if(selectedImg == null) return;
+    var r = (parseFloat(selectedImg.attr('data-r')) || 0) + 1;
+    var x = (parseFloat(selectedImg.attr('data-x')) || 0);
+    var y = (parseFloat(selectedImg.attr('data-y')) || 0);
+    var transform = 'translate(' + x + 'px, ' + y  + 'px) rotate(' + r + 'deg)';
+    selectedImg.css("transform", transform);
+    selectedImg.attr("data-r", r);
+};
+
+var rotateCCWInt;
+$("#rotateButtonMinus").mousedown(function () {
+    rotateCounterClockWise();
+    rotateCCWInt = setInterval("rotateCounterClockWise()", 30);
+}).mouseup(function () {
+    clearInterval(rotateCCWInt);
+}).mouseout(function () {
+    clearInterval(rotateCCWInt);
+});
+
+var rotateCounterClockWise = function () {
+    var selectedImg = $(".canvas-img.active");
+    if(selectedImg == null) return;
+    var r = (parseFloat(selectedImg.attr('data-r')) || 0) - 1;
+    var x = (parseFloat(selectedImg.attr('data-x')) || 0);
+    var y = (parseFloat(selectedImg.attr('data-y')) || 0);
+    var transform = 'translate(' + x + 'px, ' + y  + 'px) rotate(' + r + 'deg)';
+    selectedImg.css("transform", transform);
+    selectedImg.attr("data-r", r);
 };

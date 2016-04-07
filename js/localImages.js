@@ -35,13 +35,12 @@ var removeOldImages = function() {
 var uploadLocalImg = function (file) {
     var reader = new FileReader();
     reader.addEventListener("load", function () {
-            var imgArray = [];
+            var imgArray = new Array();
 
             if(localStorage.getItem("images") != null)
             {
                 imgArray = JSON.parse(localStorage.getItem("images"));
             }
-
             imgArray.push(reader.result);
             localStorage.setItem("images", JSON.stringify(imgArray));
 
@@ -319,3 +318,51 @@ var moveImgBehind = function (toMove, where) {
     }
     $("#" + layers["imgs"][toMoveIndex]).css("z-index", lastZ);
 };
+
+$("#doneButton").click(function() {
+    var getCollage = function(sessionID) {
+        //TODO Instead of 1024 put whatever the user wanted
+        $.get("http://localhost:3000/collage?session=" + sessionID + "&width=1024&height=1024", function(data) {
+            var imageData = JSON.parse(data).image;
+            var download = document.createElement("a");
+            download.setAttribute("href", "data:image/png;base64," + imageData)
+            download.setAttribute("download", "collage.png");
+            download.style.display = "none";
+            document.body.appendChild(download);
+            download.click();
+            document.body.removeChild(download);
+        });
+    };
+    
+    var sendImages = function(sessionID) {
+        var numSent = 0;
+        
+      
+        for(var i = 0; i < layers.imgs.length; i++)
+        {
+            var image = $("#" + layers.imgs[i]);
+            var toSend = {
+                sessionID: sessionID,
+                image: image.attr("src"),
+                operations: {
+                    crop: {x1: -1, x2: -1, y1: -1, y2: -1},
+                    layer: image.css("z-index"),
+                    size: {w: image.width(), h: image.height()},
+                    pos: {x: image.position().left, y: image.position().top}
+                }
+            }
+
+            $.post("http://localhost:3000/images", toSend, function(data) {
+                numSent++;
+                if(numSent >= layers.imgs.length)
+                {
+                    setTimeout(500, getCollage(sessionID));  
+                }
+            });
+        }
+    };
+    
+    $.get("http://localhost:3000/start", function(data) {
+        sendImages(data.id);
+    });
+});

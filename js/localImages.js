@@ -1,5 +1,4 @@
 var layers = {id:0, imgs:[]};
-var count = 0;
 
 $(document).ready(function () {
     removeOldImages();
@@ -15,8 +14,9 @@ $("#uploadImg").on( "change", function (event) {
     }
 
     if (files && files[0]) {
-        if ( (/\.(png|jpeg|jpg|gif)$/i).test(files[0].name) ) {
-            uploadLocalImg( files[0]);
+        if ( (/\.(png)$/i).test(files[0].name) ) {
+            if(files[0].size < 50000) uploadLocalImg( files[0]);
+            else errors += files[0].name +" is to large\n";
         } else {
             errors += files[0].name +" Unsupported Image extension\n";
         }
@@ -330,7 +330,7 @@ $("#doneButton").click(function() {
         $.get("http://localhost:3000/collage?session=" + sessionID + "&width=1024&height=1024", function(data) {
             var imageData = JSON.parse(data).image;
             var download = document.createElement("a");
-            download.setAttribute("href", "data:image/png;base64," + imageData)
+            download.setAttribute("href", "data:image/png;base64," + imageData);
             download.setAttribute("download", "collage.png");
             download.style.display = "none";
             document.body.appendChild(download);
@@ -355,7 +355,7 @@ $("#doneButton").click(function() {
                     size: {w: image.width(), h: image.height()},
                     pos: {x: image.position().left, y: image.position().top}
                 }
-            }
+            };
 
             $.post("http://localhost:3000/images", toSend, function(data) {
                 numSent++;

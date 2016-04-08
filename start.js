@@ -13,7 +13,6 @@ module.exports = function(app, sessions)
 		}
 
 		sessions.set(id, {num: 0, processed: 0, imgs: new Array()});
-		console.log(sessions.get(id));
 
 		//Create a place to store the images as they are uploaded
 		var dir = "./" + id;

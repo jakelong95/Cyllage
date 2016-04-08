@@ -19,8 +19,10 @@ body {
 }
 
 button {
+button{
+    cursor: pointer;
     height: 30px;
-    background-color: #7d0000;
+    background-color: #890000;
     color: white;
     border-radius: 5px;
     border-width: 1px;
@@ -40,7 +42,7 @@ button {
 
 #sideBarDiv {
     position: fixed;
-    top: 5px;
+    top: 70px;
     bottom: 5px;
     left: 5px;
     width: 150px;
@@ -62,14 +64,7 @@ button {
     background-color: white;
 }
 
-#canvasContainer{
-    height: 1000px;
-    width: 1000px;
-    overflow-y: scroll;
-    overflow-x: scroll;
-}
-
-#doneDiv {
+#doneDiv{
     position: fixed;
     display: flex;
     align-items: center;
@@ -86,14 +81,56 @@ button {
     bottom: 5px;
     left: 5px;
     width: 150px;
-    overflow-y: scroll;
-    font-size: 12px;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
 .sideBarImage {
+#sideBarImgs{
+    position: fixed;
+    top: 120px;
+    bottom: 5px;
+    left: 5px;
+    width: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.sideBarTabButton{
+    position: fixed;
+    top: 40px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    cursor: pointer;
+}
+
+#imagesTabButton{
+    left: 5px;
+}
+
+#layersTabButton{
+    left: 80px;
+}
+
+.activeTabButton{
+    width: 75px;
+    background-color: #787878;
+}
+
+.inactiveTabButton{
+    width: 73px;
+    border: 1px solid white;
+    background-color: #890000;
+}
+
+.sideBarImage{
     width: 110px;
     margin-left: 20px;
+    margin-bottom: 10px;
     box-sizing: border-box;
 }
 
@@ -109,7 +146,7 @@ button {
 .inputFile + label {
     cursor: pointer; /* "hand" cursor */
     color: white;
-    background-color: #7d0000;
+    background-color: #890000;
     display: inline-block;
     height: 30px;
     align-items: center;
@@ -120,8 +157,34 @@ button {
     text-align: center;
 }
 
-.inputFile + label:hover, button:hover {
-    background-color: red;
+.inputFile + label:hover, button:hover, .inactiveTabButton:hover{
+    background-color: #ef0000;
+}
+
+.layout-img {
+    width: 110px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+tr.layout-panel td{
+    border-bottom: #ffffff 2px solid;
+}
+
+.deleteBtn {
+    vertical-align:top;
+    position: absolute;
+    right: 2px;
+}
+
+tr.layout-panel.active {
+    background-color : #54a4f2;
+}
+
+.canvas-img.active{
+    outline: dashed 2px blue;
 }
 
 .no-close .ui-dialog-titlebar-close {

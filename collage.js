@@ -17,7 +17,6 @@ module.exports = function(app, sessions)
 
 			var addLayer = function(currentLayer)
 			{
-				//if(currentLayer < 0)
 				if(currentLayer >= session.imgs.length)
 				{
 					fs.readFile(finishedFile, function(err, data)
@@ -29,19 +28,12 @@ module.exports = function(app, sessions)
 				}
 				else
 				{
-					gm(session.imgs[currentLayer].file).size(function(err, size)
-					{
-						if(!err)
-						{
-							gm(session.imgs[currentLayer].file).draw("image over " + session.imgs[currentLayer].position.x + "," +
-							session.imgs[currentLayer].position.y + " " + size.width + "," + size.height + " " + 
-							session.imgs[currentLayer].file).write(finishedFile, function(err)
-							{
-								if(err) console.log(err);
-								addLayer(currentLayer + 1);
-							});
-						}
-					});
+                    gm(finishedFile).draw("image over " + session.imgs[currentLayer].position.x + "," + session.imgs[currentLayer].position.y +
+                                          " 0,0 " + session.imgs[currentLayer].file).write(finishedFile, function(err)
+					    {
+							if(err) console.log(err);
+							addLayer(currentLayer + 1);
+						});
 				}
 			}
 			addLayer(0);

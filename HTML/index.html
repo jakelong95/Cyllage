@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/cyllage.css">
 
     <!-- JS Files -->
-
     <script src="../js/jquery.min.js" type="text/javascript"></script>
     <script src="../js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="../js/interact.js" type="text/javascript"></script>
@@ -25,16 +24,21 @@
 <div id="doneDiv">
     <button id="doneButton">Done</button>
 </div>
+<img src="images/logo.png" draggable="false" style="height: 30px; width: 150px;"/>
+<div id="imagesTabButton" class="sideBarTabButton activeTabButton">Images</div>
+<div id="layersTabButton" class="sideBarTabButton inactiveTabButton">Layers</div>
 <div id="sideBarDiv">
-    <img src="images/logo.png" draggable="false" style="height: 30px; width: 150px;"/>
+    <!--
     <button id="imagesButton" class="sideBarButtons">Images</button>
     <button id="layersButton" class="sideBarButtons">Layers</button>
+    -->
     <div id="imagesTab" class="sideBarTab" style="display: block;">
-        <input id="uploadImg" class="inputFile" type="file">
-        <label for="uploadImg">Upload an Image</label>
+        <input id="uploadImg" class="inputFile" accept=".png" type="file">
+        <label for="uploadImg" style="margin-bottom: 10px;">Upload an Image</label>
         <div id="sideBarImgs"></div>
     </div>
     <div id="layersTab" class="sideBarTab" style="display: none;">
+        <table id="layerImgs" width="100%"></table>
     </div>
 </div>
 

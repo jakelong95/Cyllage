@@ -14,11 +14,11 @@
 
 }
 
-body{
+body {
     background-color: #464646;
 }
 
-button{
+button {
     height: 30px;
     background-color: #7d0000;
     color: white;
@@ -27,10 +27,10 @@ button{
     border-color: white;
 }
 
-#toolboxDiv{
+#toolboxDiv {
     position: fixed;
     display: flex;
-    align-items:center;
+    align-items: center;
     top: 5px;
     left: 160px;
     right: 5px;
@@ -38,7 +38,7 @@ button{
     background-color: #585858;
 }
 
-#sideBarDiv{
+#sideBarDiv {
     position: fixed;
     top: 5px;
     bottom: 5px;
@@ -47,30 +47,39 @@ button{
     background-color: #787878;
 }
 
-.sideBarButtons{
+.sideBarButtons {
     width: 73px;
 }
 
-#canvasDiv{
+#canvasDiv {
     position: fixed;
     top: 40px;
     left: 160px;
     bottom: 5px;
     right: 5px;
+    height: 0px;
+    width: 0px;
     background-color: white;
 }
 
-#doneDiv{
+#canvasContainer{
+    height: 1000px;
+    width: 1000px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+#doneDiv {
     position: fixed;
     display: flex;
-    align-items:center;
+    align-items: center;
     top: 5px;
     right: 5px;
     height: 30px;
     background-color: #585858;
 }
 
-.sideBarTab{
+.sideBarTab {
     position: fixed;
     background-color: transparent;
     top: 80px;
@@ -82,7 +91,7 @@ button{
     overflow-x: hidden;
 }
 
-.sideBarImage{
+.sideBarImage {
     width: 110px;
     margin-left: 20px;
     box-sizing: border-box;
@@ -115,7 +124,59 @@ button{
     background-color: red;
 }
 
-
 .no-close .ui-dialog-titlebar-close {
     display: none;
+}
+
+.rightButton {
+    position: absolute;
+    right: 5px;
+
+}
+
+body {
+    font-size: 62.5%;
+}
+
+label, input {
+    display: block;
+}
+
+input.text {
+    margin-bottom: 12px;
+    width: 95%;
+    padding: .4em;
+}
+
+fieldset {
+    padding: 0;
+    border: 0;
+    margin-top: 25px;
+}
+
+h1 {
+    font-size: 1.2em;
+    margin: .6em 0;
+}
+
+div#users-contain {
+    width: 350px;
+    margin: 20px 0;
+}
+
+div#users-contain table {
+    margin: 1em 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+div#users-contain table td, div#users-contain table th {
+    border: 1px solid #eee;
+    padding: .6em 10px;
+    text-align: left;
+}
+
+#dialog-form {
+    border: 2px solid black;
+    background-color: white;
 }
